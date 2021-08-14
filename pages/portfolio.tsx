@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 //Next
 import Script from 'next/script';
@@ -34,6 +34,18 @@ const projects: project[] = [
 
 const Portfolio: FC = () => {
 	const [category, setCategory] = useState<string>(catEnum.ALL);
+	const [projectsFiltred, setProjectsFiltred] = useState<project[]>(projects);
+
+	useEffect(() => {
+		if (category === catEnum.ALL) {
+			setProjectsFiltred(projects);
+		} else {
+			setProjectsFiltred(
+				projects.filter(item => item.category === category)
+			);
+		}
+	}, [category]);
+
 	const categoryHandler = (el): void => {
 		setCategory(el);
 	};
@@ -86,73 +98,30 @@ const Portfolio: FC = () => {
 						</div>
 
 						<div className={styles.Portfolio__items}>
-							{catEnum.ALL === category
-								? projects.map((project, index) => (
-										<Project key={index} item={project} />
-										// eslint-disable-next-line no-mixed-spaces-and-tabs
-								  ))
-								: projects.map((project, index2) => {
-										return category === project.category ? (
-											<Project
-												key={index2}
-												item={project}
-											/>
-										) : (
-											''
-										);
-										// eslint-disable-next-line no-mixed-spaces-and-tabs
-								  })}
-							{/*<div*/}
-							{/*	className={styles.Portfolio__items__block}*/}
-							{/*	data-cat='Websites'>*/}
-							{/*	<div*/}
-							{/*		className={*/}
-							{/*			styles.Portfolio__items__block__photo*/}
-							{/*		}>*/}
-							{/*		<Image src={websiteMini} alt='' />*/}
-							{/*	</div>*/}
-							{/*	<div*/}
-							{/*		className={*/}
-							{/*			styles.Portfolio__items__block__content*/}
-							{/*		}>*/}
-							{/*		<a*/}
-							{/*			href='https://github.com/Shkulipa/Mini'*/}
-							{/*			target='_blank'*/}
-							{/*			rel='noreferrer'>*/}
-							{/*			<i className='fab fa-github'></i>*/}
-							{/*		</a>*/}
-							{/*		<a*/}
-							{/*			href='https://shkulipa.github.io/Mini/'*/}
-							{/*			target='_blank'*/}
-							{/*			rel='noreferrer'>*/}
-							{/*			<i className='fas fa-link'></i>*/}
-							{/*		</a>*/}
-							{/*	</div>*/}
-							{/*</div>*/}
-							{/*<div className="Portfolio__items__block" data-cat="Websites">*/}
-							{/*	<div className="Portfolio__items__block__photo">*/}
-							{/*		<img src="./../../img//projects/gif.gif" alt="">*/}
-							{/*	</div>*/}
-							{/*	<div className="Portfolio__items__block__content">*/}
-							{/*		<a href="https://github.com/Shkulipa/Mini" target="_blank"><i*/}
-							{/*			className="fab fa-github"></i></a>*/}
-							{/*		<a href="https://shkulipa.github.io/Mini/" target="_blank"><i*/}
-							{/*			className="fas fa-link"></i></a>*/}
-							{/*	</div>*/}
-							{/*</div>*/}
-						</div>
-						<div className={styles.noItems}>
-							<div className={styles.noItems__flex}>
-								<Image
-									className={styles.noItems__flex__img}
-									src={folderOpenSolid}
-									alt=''
-								/>
-								<b>
-									Sorry, but there are no projects in this
-									category :(
-								</b>
-							</div>
+							{projectsFiltred.length <= 0 ? (
+								<div className={styles.noItems}>
+									<div className={styles.noItems__flex}>
+										<Image
+											width={128}
+											height={128}
+											className={
+												styles.noItems__flex__img
+											}
+											src={folderOpenSolid}
+											alt=''
+										/>
+										<b>
+											Sorry, but there are no projects in
+											this category :(
+										</b>
+									</div>
+								</div>
+							) : (
+								projectsFiltred.map((project, index) => (
+									<Project key={index} item={project} />
+									// eslint-disable-next-line no-mixed-spaces-and-tabs
+								))
+							)}
 						</div>
 					</div>
 

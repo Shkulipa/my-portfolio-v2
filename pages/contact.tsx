@@ -9,6 +9,10 @@ import Script from 'next/script';
 import Burger from '../components/burger';
 import Copyright from '../components/copyright';
 
+//Utilities
+import * as Yup from 'yup';
+import { ErrorMessage, Formik } from 'formik';
+
 //Images
 import location from '/public/location.svg';
 import email from '/public/Email.svg';
@@ -18,7 +22,65 @@ import close from '/public/close.svg';
 //styles
 import styles from '../styles/pages/contact.module.scss';
 
+//Typization
+interface initialValues {
+	name: string;
+	email: string;
+	message: string;
+}
+
 const Contact: FC = () => {
+	const initialValues: initialValues = {
+		name: '',
+		email: '',
+		message: '',
+	};
+
+	const schema = Yup.object().shape({
+		name: Yup.string()
+			.min(2, 'Must be 2 characters or More')
+			.required('Required'),
+		email: Yup.string().email('Invalid email address').required('Required'),
+		message: Yup.string()
+			.min(2, 'Must be 2 characters or less')
+			.max(299, 'Must be 299 characters or less')
+			.required('Required'),
+	});
+
+	const submitHandler = ({ email, message, name }) => {
+		// Телеграм отправка сообщения
+		// https://core.telegram.org/bots/api#sendmessage
+		const requestOptionsPush = {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json, text/plain, */*',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				chat_id: process.env.NEXT_PUBLIC_CHAT_ID,
+				parse_mode: 'HTML',
+				text: `
+Сайт: Портфолио
+Name: ${name}
+Email: <a href="mailto:${email}">${email}</a>
+Message: ${message}`,
+			}),
+		};
+
+		try {
+			fetch(
+				`https://api.telegram.org/${process.env.NEXT_PUBLIC_BOT_TOKEN}/sendMessage`,
+				requestOptionsPush
+			).then(response => response.json());
+		} catch (e) {
+			console.error(e);
+		}
+	};
+
+	const errorMsg = msg => {
+		return <div className={styles.form__error}>{msg}</div>;
+	};
+
 	return (
 		<>
 			<Head>
@@ -48,40 +110,70 @@ const Contact: FC = () => {
 					<div className={styles.Contact__SeyHello}>
 						<h1>Sey Hello!</h1>
 
-						<form className={styles.form} method='POST' action='#'>
-							<div className={styles.Contact__SeyHello__Name}>
-								<input
-									name='name_contact'
-									id='name_contact'
-									placeholder='Your name...*'
-									type='text'
-								/>
-							</div>
-							<div
-								className={styles.Contact__SeyHello__YourEmail}>
-								<input
-									name='u_email'
-									id='u_email'
-									placeholder='Your Email...*'
-									type='text'
-								/>
-							</div>
-							<div className={styles.Contact__SeyHello__Message}>
-								<textarea
-									id='msg_contact'
-									name='msg'
-									placeholder='Your Message...*'
-									maxLength={299}
-								/>
-							</div>
+						<Formik
+							initialValues={initialValues}
+							validationSchema={schema}
+							onSubmit={submitHandler}>
+							{formik => (
+								<form
+									className={styles.form}
+									onSubmit={formik.handleSubmit}>
+									<div
+										className={
+											styles.Contact__SeyHello__Name
+										}>
+										<ErrorMessage name='name'>
+											{errorMsg}
+										</ErrorMessage>
+										<input
+											name='name'
+											type='text'
+											placeholder='Your name...'
+											{...formik.getFieldProps('name')}
+										/>
+									</div>
 
-							<button
-								className={
-									styles.Contact__SeyHello__SendButton
-								}>
-								Send
-							</button>
-						</form>
+									<div
+										className={
+											styles.Contact__SeyHello__YourEmail
+										}>
+										<ErrorMessage name='email'>
+											{errorMsg}
+										</ErrorMessage>
+										<input
+											type='email'
+											name='email'
+											placeholder='Your email...'
+											{...formik.getFieldProps('email')}
+										/>
+									</div>
+
+									<div
+										className={
+											styles.Contact__SeyHello__Message
+										}>
+										<ErrorMessage name='message'>
+											{errorMsg}
+										</ErrorMessage>
+										<textarea
+											id='msg_contact'
+											name='msg'
+											placeholder='Your Message...'
+											maxLength={299}
+											{...formik.getFieldProps('message')}
+										/>
+									</div>
+
+									<button
+										className={
+											styles.Contact__SeyHello__SendButton
+										}
+										type='submit'>
+										Send
+									</button>
+								</form>
+							)}
+						</Formik>
 					</div>
 
 					{/*Contact__Map*/}
@@ -110,13 +202,23 @@ const Contact: FC = () => {
 							</div>
 
 							<div className={styles.Contact__Details__block}>
-								<Image width='24' src={email} alt='' />
-								<div
-									className={
-										styles.Contact__Details__block__content
-									}>
-									Oleksii.Shkulipa@gmail.com
-								</div>
+								<a
+									target='_blank'
+									href='mailto:oleksii.Shkulipa@gmail.com'
+									rel='noreferrer'>
+									<Image
+										width={24}
+										height={24}
+										src={email}
+										alt=''
+									/>
+									<div
+										className={
+											styles.Contact__Details__block__content
+										}>
+										Oleksii.Shkulipa@gmail.com
+									</div>
+								</a>
 							</div>
 
 							<div className={styles.Contact__Details__block}>
