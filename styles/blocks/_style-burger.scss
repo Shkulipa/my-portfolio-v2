@@ -1,0 +1,131 @@
+@import "../variables/variables.scss";
+
+.burgerBtn {
+  position: relative;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .4s ease;
+  top: 35px;
+  margin-left: 10%;
+
+  &__menu {
+    display: flex;
+    align-items: center;
+
+    &__burger {
+      width: 26px;
+      height: 4px;
+      background-color: #ffffff;
+      border-radius: 4px;
+      transition: all .4s ease;
+
+      &::after,
+      &::before {
+        position: absolute;
+        display: block;
+        content: '';
+        width: 26px;
+        height: 4px;
+        background-color: #ffffff;
+        border-radius: 4px;
+        transition: all .4s ease;
+      }
+
+      &::before {
+        transform: translateY(-8px);
+      }
+
+      &::after {
+        transform: translateY(8px);
+      }
+    }
+
+    &__title {
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-left: 15px;
+
+      span {
+        color: $pink;
+      }
+    }
+
+    // animation
+    &.openBurger {
+      .burgerBtn__menu__burger {
+        transform: translateX(26px);
+        background: transparent;
+
+        &::before {
+          transform: rotate(45deg) translate(-18px, 18px);
+        }
+
+        &::after {
+          transform: rotate(-45deg) translate(-18px, -18px);
+        }
+      }
+    }
+  }
+
+
+}
+
+.burgerNav {
+  display: none;
+
+  position: absolute;
+  flex-direction: column;
+  align-items: center;
+  background-color: $black;
+  border: 3px solid #ffffff;
+  border-radius: 12px;
+  padding: 15px;
+
+  margin-top: 15px;
+
+  &.open {
+    display: flex;
+  }
+
+  &__item {
+    color: #ffffff;
+    margin: 3px auto;
+    text-decoration: none;
+    font-size: 1.3rem;
+    border-bottom: 3px solid #ffffff00;
+    font-weight: bold;
+
+    span {
+      color: $pink;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      border-bottom: 3px solid $pink;
+      color: $pink;
+      transform: scale(1.1);
+      transition: all .2s linear;
+    }
+  }
+}
+
+@media (max-width:$mobile) {
+  .burgerBtn {
+    top: 0;
+    margin-left: 5px;
+  }
+
+  .burgerNav {
+    z-index: 999;
+    margin-left: 5px;
+
+    &__item {
+      font-size: 1.5rem;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@import "../variables/variables";
+
+@function px2vw($value) {
+  @return $value / ($mWidth / 100) + vw;
+}

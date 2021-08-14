@@ -1,0 +1,26 @@
+@import "variables/variables";
+
+
+html {
+  font-size: 15px;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+  color: $white;
+  overflow-x: hidden;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}

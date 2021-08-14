@@ -1,0 +1,19 @@
+@import "../variables/variables";
+
+.Copyright {
+  padding: 15px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  border-bottom: 7px solid $black;
+  background: $white;
+  color: $black;
+  font-weight: 700;
+}
+
+.Copyright__Name {
+  color: $black;
+  text-decoration: none;
+}

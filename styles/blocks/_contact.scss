@@ -1,0 +1,508 @@
+@import "../variables/variables.scss";
+
+.Contact {
+  display: block;
+  overflow-x: hidden;
+  position: relative;
+
+
+
+  top: 0;
+  left: 0;
+
+  z-index: 1000;
+
+  width: 100vw;
+  height: 100vh;
+
+  &-error {
+    margin: 15px 0;
+    font-weight: bold;
+    color: #ff0000;
+    font-size: 1.2rem;
+  }
+}
+// Contact__left(left Side)
+.Contact__left {
+  position: fixed;
+
+  width: 40%;
+  height: 100vh;
+  background: #1a1b23;
+}
+
+.Contact__left__home {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  font-size: 1.4rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: bold;
+
+  top: 35px;
+  margin-left: 10%;
+
+  transition: all .2s linear;
+
+  @media (max-width: $mobile) {
+    top: 0;
+    margin-left: 0;
+  }
+
+  @media (max-width: $mobile-sm) {
+    font-size: 1.1rem;
+  }
+
+  & i {
+    margin-right: 5px;
+  }
+
+  &__text {
+    text-transform: uppercase;
+
+    & span {
+      color: $pink;
+    }
+  }
+
+  &:hover {
+    transition: all .2s linear;
+    transform: scale(1.1);
+
+    .Portfolio__left__home__text {
+      text-decoration: underline;
+    }
+  }
+}
+
+.Contact__left h1 {
+  position: relative;
+  color: $white;
+  font-size: 4.8rem;
+  text-transform: uppercase;
+
+
+  top:65%;
+  margin-left: 10%;
+
+  @media (max-width:$mobile) {
+    margin-left: 0;
+  }
+
+
+  & span {
+    color: $pink;
+  }
+}
+
+.Contact__left h1::after{
+  position: absolute;
+
+  content: "";
+  display: block;
+  left: 0;
+  height: 10px;
+  width: 85%;
+  max-width: 70%;
+  background-color: $pink;
+}
+
+// Contact__right(Right Side)
+.Contact__right {
+  position: absolute;
+  right: 0;
+
+  width: 60%;
+  height: 100vh;
+  background: $black;
+}
+
+.Contact__SeyHello {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 5rem 4rem;
+  background-color: $white;
+  color: $black;
+  border-bottom: 7px solid $black;
+  border-top: 7px solid $black;
+
+  & h1 {
+    color: $black;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+}
+
+.form {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+}
+
+.Contact__SeyHello__Name {
+  width: 100%;
+  margin-bottom: 20px;
+
+  & input {
+    height: 50px;
+    border: 2px solid $pink;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    font-size: 1rem;
+    color: $black;
+    font-style: italic;
+
+    &:focus {
+      transition: .2s linear;
+      transform: scale(1.01);
+      border: 2px solid #0000ff6f;
+      outline: none;
+      box-shadow: 0 0 5px #0000ff36;;
+    }
+  }
+}
+
+.Contact__SeyHello__YourEmail {
+  width: 100%;
+  margin-bottom: 20px;
+
+  & input {
+    height: 50px;
+    border: 2px solid $pink;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    font-size: 1rem;
+    color: $black;
+    font-style: italic;
+
+    &:focus {
+      transition: .2s linear;
+      transform: scale(1.01);
+      border: 2px solid #0000ff6f;
+      outline: none;
+      box-shadow: 0 0 5px #0000ff36;;
+    }
+  }
+}
+
+.Contact__SeyHello__Message {
+  width: 100%;
+  margin-bottom: 20px;
+
+  & textarea {
+    resize : none;
+    height: 250px;
+    border: 2px solid $pink;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    font-size: 1rem;
+    color: $black;
+    font-style: italic;
+    transition: .2s linear;
+
+    &:focus {
+      transition: .2s linear;
+      transform: scale(1.01);
+      border: 2px solid #0000ff6f;
+      outline: none;
+      box-shadow: 0 0 5px #0000ff36;;
+    }
+  }
+}
+
+.Contact__SeyHello__SendButton{
+  padding: 10px;
+  border: 2px solid $pink;
+  background: none;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  width: 130px;
+  color: $pink;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: .2s linear;
+
+  &:hover {
+    transition: .2s linear;
+    color: $white;
+    background: $pink;
+    transform: scale(1.1);
+    box-shadow: 0 0 5px rgba(233, 76, 110, 0.435);
+  }
+
+  &:focus{
+    transition: .2s linear;
+    transform: scale(0.95);
+    border: 2px solid rgba(233, 76, 110, 0.435);
+    outline: none;
+  }
+}
+
+.Contact__SeyHello__Name__MessageSend {
+  display: block;
+
+  margin: 15px;
+  padding: 10px;
+  font-weight: 700;
+  text-align: center;
+  border: 3px solid $green;
+  background: none;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  color: $green;
+
+  &.error {
+    border: 3px solid #ff0000;
+    color: #ff0000;
+  }
+}
+
+// Contact__Map
+.Contact__Map {
+  width: 100%;
+  height: 450px;
+  border-bottom: 7px solid #1a1b23;
+
+  & iframe {
+    width: 100%;
+    height: 100%
+  }
+}
+
+// Contact__Details
+.Contact__Details {
+  background: white;
+  border-bottom: 7px solid #1a1b23;
+  padding: 4rem 4rem;
+
+  width: 100%;
+}
+
+.Contact__Detail__items {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-bottom: 50px;
+}
+
+.Contact__Details__block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+
+  width: 33%;
+
+  & .Contact__Details__block__content {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: $black;
+  }
+
+  & a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+
+    img {
+
+    }
+  }
+}
+
+.Contact__social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Contact__social__content {
+  display: flex;
+  justify-content: center;
+  margin: 0 10px;
+
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50%;
+  border: 3px solid $black;
+  background: none;
+
+  text-decoration: none;
+  transition: .2s linear;
+
+  &:hover {
+    transition: .2s linear;
+    transform: scale(1.1);
+    background: $black;
+
+  }
+}
+
+.Contact__social__content__icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: $black;
+  transition: .2s linear;
+}
+
+.Contact__social__content:hover .Contact__social__content__icon {
+  transition: .2s linear;
+  color: $white;
+}
+
+
+
+
+
+
+//Notebook(max-width: 1199px)
+@media (max-width:$notebook) {
+  .Contact__SeyHello {
+    padding: 2rem 2rem;
+  }
+
+  .Contact__left h1 {
+    font-size: 4.5rem;
+    margin-left: 10%;
+  }
+
+  .Contact__Details {
+    padding: 2rem 1rem;
+  }
+
+  .Contact__Detail__items {
+    justify-content: center;
+  }
+
+  .Contact__Details__block .Contact__Details__block__content {
+    text-align: center;
+    padding: 0 2rem;
+  }
+
+}
+
+
+//Notebook(max-width: 991px)
+@media (max-width:$tablet) {
+  .Contact__left h1 {
+    font-size: 2.8rem;
+
+    .Contact__Detail__items {
+      justify-content: center;
+    }
+
+    .Contact__Details__block {
+      justify-content: normal;
+    }
+  }
+}
+
+//Mobile(max-width: 767px)
+@media (max-width: $mobile) {
+  .Contact {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .Contact__left {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    max-height: 100%;
+    background: #1a1b23;
+    padding: 0 15px;
+  }
+
+  .Contact__right {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .Contact__left h1 {
+    top: 0;
+  }
+
+  .Contact__left h1::after {
+    width: 120%;
+    max-width: 120%;
+
+    left: auto;
+    right: 0;
+  }
+}
+
+//Mobile-sm(max-width: 565px)
+@media (max-width: $mobile-sm) {
+  .Contact h1 {
+    font-size: 1.5rem;
+  }
+
+  .Contact__left h1::after {
+    height: 7px;
+  }
+
+  .Contact__left {
+    height: 95px;
+  }
+
+  .Contact__SeyHello h1 {
+    font-size: 1.5rem;
+  }
+
+  .Contact__Map {
+    height: 225px;
+  }
+
+  .Contact__Detail__items {
+    margin-bottom: 20px;
+  }
+
+  .Contact__Details__block {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .Contact__social {
+    flex-wrap: wrap;
+  }
+
+  .Contact__social__content {
+    margin: 10px 10px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .Contact .Copyright {
+    flex-direction: column;
+
+    & a {
+      margin-bottom: 10px;
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import "../variables/variables.scss";
+
+.SectionBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 7rem;
+  background-color: #E94C6F;
+  color: #ffffff;
+  border-bottom: 7px solid #1a1b23;
+
+  @media (max-width: $tablet) {
+    padding: 2.5rem 2rem;
+  }
+
+  &.invertCls {
+    color: #1a1b23;
+    background-color: #ffffff;
+  }
+
+  & h1 {
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+    text-align: center;
+
+    @media (max-width: 991px) {
+      margin-bottom: 2rem;
+    }
+  }
+}
