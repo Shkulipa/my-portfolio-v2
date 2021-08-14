@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 
 //Next js
 import Head from 'next/head';
@@ -30,6 +30,11 @@ interface initialValues {
 }
 
 const Contact: FC = () => {
+	const [msgModal, setMsgModal] = useState<string>('');
+	const [showModal, setShowModal] = useState<boolean>(false);
+	const [errorMsgAfterFetch, setErrorMsgAfterFetch] =
+		useState<boolean>(false);
+
 	const initialValues: initialValues = {
 		name: '',
 		email: '',
@@ -47,7 +52,7 @@ const Contact: FC = () => {
 			.required('Required'),
 	});
 
-	const submitHandler = ({ email, message, name }) => {
+	const submitHandler = ({ email, message, name }, action) => {
 		// Телеграм отправка сообщения
 		// https://core.telegram.org/bots/api#sendmessage
 		const requestOptionsPush = {
@@ -71,10 +76,23 @@ Message: ${message}`,
 			fetch(
 				`https://api.telegram.org/${process.env.NEXT_PUBLIC_BOT_TOKEN}/sendMessage`,
 				requestOptionsPush
-			).then(response => response.json());
+			).then(() => {
+				setErrorMsgAfterFetch(false);
+				setMsgModal('Thank you, message sent!');
+				setShowModal(true);
+			});
 		} catch (e) {
+			setMsgModal('Something went wrong, please try again later :(');
+			setErrorMsgAfterFetch(true);
+			setShowModal(true);
 			console.error(e);
 		}
+
+		action.resetForm();
+	};
+
+	const closeModal = () => {
+		setShowModal(false);
 	};
 
 	const errorMsg = msg => {
@@ -312,13 +330,24 @@ Message: ${message}`,
 			{/*/Contact*/}
 
 			{/*Форма благодарности*/}
-			<div className={styles.overlay}>
-				<div className={styles.modal} id='modal'>
-					<div className={styles.modal__close} id='modal-close'>
-						<Image src={close} width='24' alt='' />
+			<div
+				className={`${styles.overlay} ${
+					showModal ? styles.overlayShow : ''
+				}`}>
+				<div
+					className={`${styles.modal} ${
+						showModal ? styles.modalShow : ''
+					}`}>
+					<div className={styles.modal__close} onClick={closeModal}>
+						<Image src={close} width={24} height={24} alt='' />
 					</div>
-					<div className='modal__text' id='modal-text'>
-						{/*Some text*/}
+					<div
+						className={`${styles.modal__text} ${
+							errorMsgAfterFetch
+								? styles.errorText
+								: styles.successText
+						}`}>
+						{msgModal}
 					</div>
 				</div>
 			</div>

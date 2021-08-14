@@ -6,6 +6,10 @@
   z-index: 1000;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
+
+  &.overlayShow {
+    display: block;
+  }
 }
 
 .modal {
@@ -33,7 +37,11 @@
     width: 260px;
   }
 
-  & .modal__close {
+  &.modalShow {
+    display: flex;
+  }
+
+  .modal__close {
     position: absolute;
     top: 15px;
     opacity: .5;
@@ -46,14 +54,21 @@
     transition: 0.2s linear;
   }
 
-  & .modal__close:hover {
+  .modal__close:hover {
     transition: 0.2s linear;
     transform: scale(1.2);
   }
 
-  & .modal__text {
-    font-size: 1.26rem;
+  .modal__text {
+    font-size: 1.3rem;
     font-weight: 700;
-    margin-bottom: 10px;
+
+    &.successText {
+      color: green;
+    }
+
+    &.errorText {
+      color: red;
+    }
   }
 }
