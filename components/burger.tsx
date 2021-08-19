@@ -9,6 +9,9 @@ import LinkCustom from './link';
 //styles
 import styles from '../styles/pages/resume.module.scss';
 
+//transition
+import { CSSTransition } from 'react-transition-group';
+
 //Array of Pages
 const pages: page[] = [
 	{
@@ -72,20 +75,25 @@ const Burger: FC = () => {
 				</div>
 			</div>
 
-			<nav className={`${styles.burgerNav} ${active ? styles.open : ''}`}>
-				{pages.map((item, index) => {
-					return item.link === router.pathname ? (
-						''
-					) : (
-						<LinkCustom
-							key={index}
-							className={styles.burgerNav__item}
-							href={item.link}>
-							{item.html}
-						</LinkCustom>
-					);
-				})}
-			</nav>
+			<CSSTransition in={active} timeout={200} classNames='my-node'>
+				<nav
+					className={`${styles.burgerNav} ${
+						active ? styles.open : ''
+					}`}>
+					{pages.map((item, index) => {
+						return item.link === router.pathname ? (
+							''
+						) : (
+							<LinkCustom
+								key={index}
+								className={styles.burgerNav__item}
+								href={item.link}>
+								{item.html}
+							</LinkCustom>
+						);
+					})}
+				</nav>
+			</CSSTransition>
 		</div>
 	);
 };

@@ -166,7 +166,7 @@ const Resume: FC = () => {
 										target='_blank'
 										rel='noreferrer'>
 										Sumy State University
-									</a>
+									</a>{' '}
 									/ September 2018 - May 2020 / Masters&apos;s
 									degree
 								</h2>
@@ -187,7 +187,7 @@ const Resume: FC = () => {
 										target='_blank'
 										rel='noreferrer'>
 										Sumy State University
-									</a>
+									</a>{' '}
 									/ September 2014 - May 2018 /
 									bachelor&apos;s degree
 								</h2>
