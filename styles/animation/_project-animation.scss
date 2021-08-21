@@ -1,0 +1,19 @@
+//Project Animation
+.project-enter {
+  opacity: 0;
+  transform: scale(.8);
+}
+.project-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all .4s ease;
+}
+.project-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.project-exit-active {
+  opacity: 0;
+  transform: scale(.8);
+  transition: all .4s cease;
+}

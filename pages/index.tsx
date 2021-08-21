@@ -1,5 +1,9 @@
 import React, { FC } from 'react';
 
+//type text animation (https://github.com/jstejada/react-typist#cssBlink)
+import Typist from 'react-typist';
+import 'react-typist/dist/Typist.css';
+
 //Next
 import Head from 'next/head';
 import Image from 'next/image';
@@ -13,9 +17,12 @@ import avatar from '/public/my_photo_165px-x-165px.jpg';
 import LinkedIn from '/public/LinkedIn.svg';
 import facebook from '/public/facebook.svg';
 import telegram from '/public/telegram.svg';
-import resumeIcon from '/public/curriculum-vitae.svg';
-import portfolioIcon from '/public/portfolio.svg';
-import contactIcon from '/public/contact.svg';
+import resumeIcon from '/public/curriculum-vitae-for-resume-with-border-01.svg';
+import portfolioIcon from '/public/portfolio-with-border-01.svg';
+import contactIcon from '/public/email-with-border-01.svg';
+import paper from '/public/paper-with-border-01.svg';
+import magnifier from '/public/magnifier-01.svg';
+import lastEmail from '/public/last-email-with-border-01.svg';
 
 //styles
 import styles from '../styles/pages/home.module.scss';
@@ -47,8 +54,10 @@ const Index: FC = () => {
 							alt='Oleksii Shkulipa'
 						/>
 						<h1>
-							hello
-							<br /> i&apos;m <span>Oleksii</span> Shkulipa
+							<Typist startDelay={500} avgTypingDelay={165}>
+								hello
+								<br /> i&apos;m <span>Oleksii</span> Shkulipa
+							</Typist>
 						</h1>
 						<h2>web-developer</h2>
 
@@ -56,37 +65,47 @@ const Index: FC = () => {
 							<a
 								target='_blank'
 								href='https://www.linkedin.com/in/oleksii-shkulipa'
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<Image
 									src={LinkedIn}
-									width='24'
+									width={24}
+									height={24}
 									alt='LinkedIn'
+									layout='fixed'
 								/>
 							</a>
 							<a
 								target='_blank'
 								href='https://www.facebook.com/Oleksii.Shkulipa/'
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<Image
 									src={facebook}
-									width='24'
+									width={24}
+									height={24}
 									alt='facebook'
+									layout='fixed'
 								/>
 							</a>
 							<a
 								target='_blank'
 								href='https://t.me/Shkulipa'
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<Image
 									src={telegram}
-									width='24'
+									width={24}
+									height={24}
 									alt='telegram'
+									layout='fixed'
 								/>
 							</a>
 							<a
 								target='_blank'
 								href='https://github.com/Shkulipa'
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<i className='fab fa-github'></i>
 							</a>
 						</div>
@@ -97,17 +116,32 @@ const Index: FC = () => {
 					{/*Resume*/}
 					<LinkCustom
 						className={styles.Homepage__right__side__coll}
-						href='/resume'>
+						href='/resume'
+					>
 						<div className={styles.Homepage__right__side__photo}>
 							<div
-								className={
-									styles.Homepage__right__side__bgForPhoto
-								}>
+								className={`${styles.Homepage__right__side__bgForPhoto} ${styles.resumeBlock}`}
+							>
 								<Image
 									src={resumeIcon}
+									width={62}
+									height={62}
+									alt='Resume'
+									layout='fixed'
+									className={
+										styles.Homepage__right__side__bgForPhoto__ResumePhotoMain
+									}
+								/>
+
+								<Image
+									src={magnifier}
 									width={54}
 									height={54}
 									alt='Resume'
+									layout='fixed'
+									className={
+										styles.Homepage__right__side__bgForPhoto__ResumePhotoMain
+									}
 								/>
 							</div>
 						</div>
@@ -117,9 +151,8 @@ const Index: FC = () => {
 								re<span>s</span>ume
 							</div>
 							<div
-								className={
-									styles.Homepage__right__sidesubtitle
-								}>
+								className={styles.Homepage__right__sidesubtitle}
+							>
 								Something about my experience and skills
 							</div>
 						</div>
@@ -127,16 +160,58 @@ const Index: FC = () => {
 					{/*Portfolio*/}
 					<LinkCustom
 						className={styles.Homepage__right__side__coll}
-						href='/portfolio'>
+						href='/portfolio'
+					>
 						<div className={styles.Homepage__right__side__photo}>
 							<div
-								className={
-									styles.Homepage__right__side__bgForPhoto
-								}>
+								className={`${styles.Homepage__right__side__bgForPhoto} ${styles.portfolioBlock}`}
+							>
 								<Image
 									src={portfolioIcon}
-									width={46}
+									width={49}
+									height={49}
 									alt='Portfolio'
+									layout='fixed'
+								/>
+								<Image
+									src={paper}
+									width={54}
+									height={54}
+									alt='Resume'
+									layout='fixed'
+									className={
+										styles.Homepage__right__side__bgForPhoto__leftImg
+									}
+								/>
+								<Image
+									src={paper}
+									width={54}
+									height={54}
+									alt='Resume'
+									layout='fixed'
+									className={
+										styles.Homepage__right__side__bgForPhoto__leftImg
+									}
+								/>
+								<Image
+									src={paper}
+									width={54}
+									height={54}
+									alt='Resume'
+									layout='fixed'
+									className={
+										styles.Homepage__right__side__bgForPhoto__leftImg
+									}
+								/>
+								<Image
+									src={paper}
+									width={54}
+									height={54}
+									alt='Resume'
+									layout='fixed'
+									className={
+										styles.Homepage__right__side__bgForPhoto__leftImg
+									}
 								/>
 							</div>
 						</div>
@@ -145,9 +220,8 @@ const Index: FC = () => {
 								port<span>f</span>olio
 							</div>
 							<div
-								className={
-									styles.Homepage__right__sidesubtitle
-								}>
+								className={styles.Homepage__right__sidesubtitle}
+							>
 								Have a look at my works
 							</div>
 						</div>
@@ -155,16 +229,39 @@ const Index: FC = () => {
 					{/*Contact*/}
 					<LinkCustom
 						className={styles.Homepage__right__side__coll}
-						href='/contact'>
+						href='/contact'
+					>
 						<div className={styles.Homepage__right__side__photo}>
 							<div
-								className={
-									styles.Homepage__right__side__bgForPhoto
-								}>
+								className={`${styles.Homepage__right__side__bgForPhoto} ${styles.contactBlock}`}
+							>
 								<Image
 									src={contactIcon}
-									width={48}
+									width={51}
+									height={51}
 									alt='Contact'
+									layout='fixed'
+								/>
+								<Image
+									src={contactIcon}
+									width={51}
+									height={51}
+									alt='Contact'
+									layout='fixed'
+								/>
+								<Image
+									src={contactIcon}
+									width={51}
+									height={51}
+									alt='Contact'
+									layout='fixed'
+								/>
+								<Image
+									src={lastEmail}
+									width={51}
+									height={51}
+									alt='Contact'
+									layout='fixed'
 								/>
 							</div>
 						</div>
@@ -173,9 +270,8 @@ const Index: FC = () => {
 								co<span>n</span>tact
 							</div>
 							<div
-								className={
-									styles.Homepage__right__sidesubtitle
-								}>
+								className={styles.Homepage__right__sidesubtitle}
+							>
 								Say hello or find me
 							</div>
 						</div>

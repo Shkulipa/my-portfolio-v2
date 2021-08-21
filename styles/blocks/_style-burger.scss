@@ -68,12 +68,33 @@
       }
     }
   }
-
-
 }
 
+@keyframes animation-nav-burger-show-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px) scale(.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes animation-nav-burger-show-exit {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(.9);
+  }
+}
+
+
 .burgerNav {
-  display: none;
+  display: flex;
   position: absolute;
   flex-direction: column;
   align-items: center;
@@ -85,7 +106,19 @@
   margin-top: 15px;
 
   &.open {
-    display: flex;
+    &-enter{
+      animation-name: animation-nav-burger-show-enter;
+      animation-duration: .4s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
+
+    &-exit {
+      animation-name: animation-nav-burger-show-exit;
+      animation-duration: .4s;
+      animation-timing-function: ease;
+      animation-fill-mode: forwards;
+    }
   }
 
   &__item {

@@ -131,15 +131,18 @@ Message: ${message}`,
 						<Formik
 							initialValues={initialValues}
 							validationSchema={schema}
-							onSubmit={submitHandler}>
+							onSubmit={submitHandler}
+						>
 							{formik => (
 								<form
 									className={styles.form}
-									onSubmit={formik.handleSubmit}>
+									onSubmit={formik.handleSubmit}
+								>
 									<div
 										className={
 											styles.Contact__SeyHello__Name
-										}>
+										}
+									>
 										<ErrorMessage name='name'>
 											{errorMsg}
 										</ErrorMessage>
@@ -154,7 +157,8 @@ Message: ${message}`,
 									<div
 										className={
 											styles.Contact__SeyHello__YourEmail
-										}>
+										}
+									>
 										<ErrorMessage name='email'>
 											{errorMsg}
 										</ErrorMessage>
@@ -169,7 +173,8 @@ Message: ${message}`,
 									<div
 										className={
 											styles.Contact__SeyHello__Message
-										}>
+										}
+									>
 										<ErrorMessage name='message'>
 											{errorMsg}
 										</ErrorMessage>
@@ -186,7 +191,8 @@ Message: ${message}`,
 										className={
 											styles.Contact__SeyHello__SendButton
 										}
-										type='submit'>
+										type='submit'
+									>
 										Send
 									</button>
 								</form>
@@ -214,7 +220,8 @@ Message: ${message}`,
 								<div
 									className={
 										styles.Contact__Details__block__content
-									}>
+									}
+								>
 									Ukraine, Sumy
 								</div>
 							</div>
@@ -223,7 +230,8 @@ Message: ${message}`,
 								<a
 									target='_blank'
 									href='mailto:oleksii.Shkulipa@gmail.com'
-									rel='noreferrer'>
+									rel='noreferrer'
+								>
 									<Image
 										width={24}
 										height={24}
@@ -233,7 +241,8 @@ Message: ${message}`,
 									<div
 										className={
 											styles.Contact__Details__block__content
-										}>
+										}
+									>
 										Oleksii.Shkulipa@gmail.com
 									</div>
 								</a>
@@ -243,7 +252,8 @@ Message: ${message}`,
 								<a
 									target='_blank'
 									href='Skype:Stronger0075?chat'
-									rel='noreferrer'>
+									rel='noreferrer'
+								>
 									<Image
 										width={24}
 										height={24}
@@ -253,7 +263,8 @@ Message: ${message}`,
 									<div
 										className={
 											styles.Contact__Details__block__content
-										}>
+										}
+									>
 										Skype
 									</div>
 								</a>
@@ -265,11 +276,13 @@ Message: ${message}`,
 								className={styles.Contact__social__content}
 								href='https://www.linkedin.com/in/oleksii-shkulipa'
 								target='_blank'
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<div
 									className={
 										styles.Contact__social__content__icon
-									}>
+									}
+								>
 									<i className='fab fa-linkedin-in'></i>
 								</div>
 							</a>
@@ -277,11 +290,13 @@ Message: ${message}`,
 								className={styles.Contact__social__content}
 								href='https://www.facebook.com/Oleksii.Shkulipa/'
 								target='_blank'
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<div
 									className={
 										styles.Contact__social__content__icon
-									}>
+									}
+								>
 									<i className='fab fa-facebook-f'></i>
 								</div>
 							</a>
@@ -289,11 +304,13 @@ Message: ${message}`,
 								className={styles.Contact__social__content}
 								href='https://instagram.com/'
 								target='_blank'
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<div
 									className={
 										styles.Contact__social__content__icon
-									}>
+									}
+								>
 									<i className='fab fa-instagram'></i>
 								</div>
 							</a>
@@ -301,11 +318,13 @@ Message: ${message}`,
 								className={styles.Contact__social__content}
 								target='_blank'
 								href='https://t.me/Shkulipa'
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<div
 									className={
 										styles.Contact__social__content__icon
-									}>
+									}
+								>
 									<i className='fab fa-telegram-plane'></i>
 								</div>
 							</a>
@@ -313,11 +332,13 @@ Message: ${message}`,
 								className={styles.Contact__social__content}
 								href='https://github.com/Shkulipa'
 								target='_blank'
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<div
 									className={
 										styles.Contact__social__content__icon
-									}>
+									}
+								>
 									<i className='fab fa-github'></i>
 								</div>
 							</a>
@@ -333,11 +354,13 @@ Message: ${message}`,
 			<div
 				className={`${styles.overlay} ${
 					showModal ? styles.overlayShow : ''
-				}`}>
+				}`}
+			>
 				<div
 					className={`${styles.modal} ${
 						showModal ? styles.modalShow : ''
-					}`}>
+					}`}
+				>
 					<div className={styles.modal__close} onClick={closeModal}>
 						<Image src={close} width={24} height={24} alt='' />
 					</div>
@@ -346,7 +369,8 @@ Message: ${message}`,
 							errorMsgAfterFetch
 								? styles.errorText
 								: styles.successText
-						}`}>
+						}`}
+					>
 						{msgModal}
 					</div>
 				</div>

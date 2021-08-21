@@ -6,9 +6,6 @@ import { useRouter } from 'next/router';
 //components
 import LinkCustom from './link';
 
-//styles
-import styles from '../styles/pages/resume.module.scss';
-
 //transition
 import { CSSTransition } from 'react-transition-group';
 
@@ -63,31 +60,34 @@ const Burger: FC = () => {
 	};
 
 	return (
-		<div className={styles.burgerBtn}>
+		<div className='burgerBtn'>
 			<div
-				className={`${styles.burgerBtn__menu} ${
-					active ? styles.openBurger : ''
-				}`}
-				onClick={clickHandler}>
-				<div className={styles.burgerBtn__menu__burger} />
-				<div className={styles.burgerBtn__menu__title}>
+				className={`burgerBtn__menu ${active ? 'openBurger' : ''}`}
+				onClick={clickHandler}
+			>
+				<div className='burgerBtn__menu__burger' />
+				<div className='burgerBtn__menu__title'>
 					M<span>e</span>nu
 				</div>
 			</div>
 
-			<CSSTransition in={active} timeout={200} classNames='my-node'>
-				<nav
-					className={`${styles.burgerNav} ${
-						active ? styles.open : ''
-					}`}>
+			<CSSTransition
+				in={active}
+				timeout={3000}
+				classNames='open'
+				mountOnEnter={true}
+				unmoutOnExit={true}
+			>
+				<nav className='burgerNav'>
 					{pages.map((item, index) => {
 						return item.link === router.pathname ? (
 							''
 						) : (
 							<LinkCustom
 								key={index}
-								className={styles.burgerNav__item}
-								href={item.link}>
+								className='burgerNav__item'
+								href={item.link}
+							>
 								{item.html}
 							</LinkCustom>
 						);

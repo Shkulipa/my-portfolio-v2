@@ -16,6 +16,13 @@ import folderOpenSolid from '/public/folder-open-solid.svg';
 //styles
 import styles from '../styles/pages/portfolio.module.scss';
 
+//transition-group
+import {
+	Transition,
+	TransitionGroup,
+	CSSTransition,
+} from 'react-transition-group';
+
 //Typization
 import { project } from '../types/project';
 import { catEnum } from '../types/categories';
@@ -28,6 +35,30 @@ const projects: project[] = [
 		www: 'https://shkulipa.github.io/Mini/',
 		github: 'https://github.com/Shkulipa/Mini',
 		category: catEnum.WEBSITES,
+		cover: require(`/public/projects/gif.gif`),
+	},
+	{
+		www: 'https://shkulipa.github.io/Mini/',
+		github: 'https://github.com/Shkulipa/Mini',
+		category: catEnum.WEBSITES,
+		cover: require(`/public/projects/gif.gif`),
+	},
+	{
+		www: 'https://shkulipa.github.io/Mini/',
+		github: 'https://github.com/Shkulipa/Mini',
+		category: catEnum.WEBSITES,
+		cover: require(`/public/projects/gif.gif`),
+	},
+	{
+		www: 'https://shkulipa.github.io/Mini/',
+		github: 'https://github.com/Shkulipa/Mini',
+		category: catEnum.OTHER,
+		cover: require(`/public/projects/gif.gif`),
+	},
+	{
+		www: 'https://shkulipa.github.io/Mini/',
+		github: 'https://github.com/Shkulipa/Mini',
+		category: catEnum.OTHER,
 		cover: require(`/public/projects/gif.gif`),
 	},
 ];
@@ -81,7 +112,19 @@ const Portfolio: FC = () => {
 						<h1>Portfolio</h1>
 
 						<div className={styles.Portfolio__filters}>
-							{categories.map((cat, index) => {
+							<div
+								onClick={() => categoryHandler(catEnum.ALL)}
+								className={
+									category === catEnum.ALL
+										? styles.active
+										: null
+								}
+							>
+								All
+							</div>
+							{[
+								...new Set(projects.map(item => item.category)),
+							].map((cat, index) => {
 								return (
 									<div
 										key={index}
@@ -90,7 +133,8 @@ const Portfolio: FC = () => {
 											category === cat
 												? styles.active
 												: null
-										}>
+										}
+									>
 										{cat}
 									</div>
 								);
@@ -98,30 +142,18 @@ const Portfolio: FC = () => {
 						</div>
 
 						<div className={styles.Portfolio__items}>
-							{projectsFiltred.length <= 0 ? (
-								<div className={styles.noItems}>
-									<div className={styles.noItems__flex}>
-										<Image
-											width={128}
-											height={128}
-											className={
-												styles.noItems__flex__img
-											}
-											src={folderOpenSolid}
-											alt=''
-										/>
-										<b>
-											Sorry, but there are no projects in
-											this category :(
-										</b>
-									</div>
-								</div>
-							) : (
-								projectsFiltred.map((project, index) => (
-									<Project key={index} item={project} />
-									// eslint-disable-next-line no-mixed-spaces-and-tabs
-								))
-							)}
+							<TransitionGroup>
+								{projectsFiltred.map((project, index) => (
+									<CSSTransition
+										appear={true}
+										key={index}
+										timeout={400}
+										classNames='project'
+									>
+										<Project item={project} />
+									</CSSTransition>
+								))}
+							</TransitionGroup>
 						</div>
 					</div>
 

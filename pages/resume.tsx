@@ -60,13 +60,13 @@ const Resume: FC = () => {
 							</div>
 
 							<div
-								className={
-									styles.Resume__skills__progress__bar
-								}>
+								className={styles.Resume__skills__progress__bar}
+							>
 								<div
 									className={
 										styles.Resume__skills__progress__item
-									}>
+									}
+								>
 									<div style={{ width: '90%' }}>
 										<h1>HTML</h1>
 									</div>
@@ -75,7 +75,8 @@ const Resume: FC = () => {
 								<div
 									className={
 										styles.Resume__skills__progress__item
-									}>
+									}
+								>
 									<div style={{ width: '86%' }}>
 										<h1>CSS</h1>
 									</div>
@@ -94,7 +95,8 @@ const Resume: FC = () => {
 								href='https://www.mindk.com/certificates/60894751cd52b68996465494/'
 								target='_blank'
 								className={styles.Resume__Certificates__block}
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<div className={styles.Resume__photo}>
 									<Image
 										src={certificateMindK}
@@ -104,7 +106,8 @@ const Resume: FC = () => {
 								<div
 									className={
 										styles.Resume__Certificates__title
-									}>
+									}
+								>
 									MindK Dev Camp
 								</div>
 							</a>
@@ -113,7 +116,8 @@ const Resume: FC = () => {
 								href='https://geekbrains.ru/certificates/849767.en'
 								target='_blank'
 								className={styles.Resume__Certificates__block}
-								rel='noreferrer'>
+								rel='noreferrer'
+							>
 								<div className={styles.Resume__photo}>
 									<Image
 										src={certificateEnglish}
@@ -123,7 +127,8 @@ const Resume: FC = () => {
 								<div
 									className={
 										styles.Resume__Certificates__title
-									}>
+									}
+								>
 									English language. Intermediate
 								</div>
 							</a>
@@ -141,7 +146,8 @@ const Resume: FC = () => {
 									<a
 										href='https://www.one-v.co.il/'
 										target='_blank'
-										rel='noreferrer'>
+										rel='noreferrer'
+									>
 										One-V
 									</a>{' '}
 									/ November 2020 - present time / front-end
@@ -164,7 +170,8 @@ const Resume: FC = () => {
 									<a
 										href='https://sumdu.edu.ua/int/en/'
 										target='_blank'
-										rel='noreferrer'>
+										rel='noreferrer'
+									>
 										Sumy State University
 									</a>{' '}
 									/ September 2018 - May 2020 / Masters&apos;s
@@ -185,7 +192,8 @@ const Resume: FC = () => {
 									<a
 										href='https://sumdu.edu.ua/int/en/'
 										target='_blank'
-										rel='noreferrer'>
+										rel='noreferrer'
+									>
 										Sumy State University
 									</a>{' '}
 									/ September 2014 - May 2018 /
@@ -218,7 +226,8 @@ const Resume: FC = () => {
 								<div
 									className={
 										styles.Resume__language__lvl__Word
-									}>
+									}
+								>
 									Intermediate
 								</div>
 							</div>
@@ -235,7 +244,8 @@ const Resume: FC = () => {
 								<div
 									className={
 										styles.Resume__language__lvl__Word
-									}>
+									}
+								>
 									Elementary
 								</div>
 							</div>
@@ -252,7 +262,8 @@ const Resume: FC = () => {
 								<div
 									className={
 										styles.Resume__language__lvl__Word
-									}>
+									}
+								>
 									Elementary
 								</div>
 							</div>
@@ -269,7 +280,8 @@ const Resume: FC = () => {
 								<div
 									className={
 										styles.Resume__language__lvl__Word
-									}>
+									}
+								>
 									Proficient
 								</div>
 							</div>
@@ -286,7 +298,8 @@ const Resume: FC = () => {
 								<div
 									className={
 										styles.Resume__language__lvl__Word
-									}>
+									}
+								>
 									Proficient
 								</div>
 							</div>
@@ -296,7 +309,8 @@ const Resume: FC = () => {
 
 					{/*Resume download*/}
 					<div
-						className={`${styles.SectionBlock} ${styles.invertCls}`}>
+						className={`${styles.SectionBlock} ${styles.invertCls}`}
+					>
 						<h1>Download my resume?</h1>
 
 						<div className={styles.ResumeDownload}>
@@ -307,11 +321,13 @@ const Resume: FC = () => {
 							<a
 								className={styles.ResumeDownload__button}
 								download
-								href='/files/Oleksii_Shkulipa_dev.pdf'>
+								href='/files/Oleksii_Shkulipa_dev.pdf'
+							>
 								<div
 									className={
 										styles.ResumeDownload__button__text
-									}>
+									}
+								>
 									Download
 								</div>
 								<Image src={iconCurriculum} alt='' />

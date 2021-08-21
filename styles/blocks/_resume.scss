@@ -688,12 +688,14 @@
   }
 
   .Resume__left {
-    position: relative;
+    position: fixed;
+    top: 0;
+    z-index: 99;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 100px;
+    height: 95px;
     max-height: 100%;
     background: #1a1b23;
     padding: 0 15px;
@@ -703,6 +705,7 @@
     position: relative;
     width: 100vw;
     height: 100%;
+    margin-top: 85px;
   }
 
   .Resume__left h1 {
@@ -723,10 +726,6 @@
 @media (max-width: $mobile-sm) {
   .Resume__left h1 {
     font-size: 1.5rem;
-  }
-
-  .Resume__left {
-    height: 95px;
   }
 
   .Resume__left h1::after {
