@@ -9,6 +9,12 @@ import Image from 'next/image';
 import Burger from '../components/burger';
 import Copyright from '../components/copyright';
 
+//framer-motion (https://www.npmjs.com/package/framer-motion)
+import { motion } from 'framer-motion';
+
+//animation options
+import { animateLeftSide, animateRightSide } from '../styles/animation/animationForSides';
+
 //Images
 import photoForSkills from '/public/Photo__for__skills.svg';
 import certificateMindK from '/public/Certificates/mindk-dev-camp.png';
@@ -24,9 +30,18 @@ import iconCurriculum from '/public/curriculum-vitae-for-resume.svg';
 //styles
 import styles from '../styles/pages/resume.module.scss';
 
+//type text animation (https://github.com/jstejada/react-typist#cssBlink)
+import Typist from 'react-typist';
+import 'react-typist/dist/Typist.css';
+
 const Resume: FC = () => {
 	return (
-		<>
+		<motion.div
+			key='resume-page'
+			exit='exit'
+			initial='initial'
+			animate='animate'
+		>
 			<Head>
 				<meta charSet='UTF-8' />
 				<meta
@@ -43,14 +58,16 @@ const Resume: FC = () => {
 			</Head>
 
 			<section className={styles.Resume}>
-				<div className={styles.Resume__left}>
+				<motion.div key='Resume__left' variants={animateLeftSide} className={styles.Resume__left}>
 					<Burger />
 
 					<h1>
-						Re<span>s</span>ume
+						<Typist startDelay={500} avgTypingDelay={165}>
+							Re<span>s</span>ume
+						</Typist>
 					</h1>
-				</div>
-				<div className={styles.Resume__right}>
+				</motion.div>
+				<motion.div key='Resume__right' variants={animateRightSide}  className={styles.Resume__right}>
 					{/*Resume__skills*/}
 					<div className={styles.Resume__skills}>
 						<h1>Skills</h1>
@@ -336,7 +353,7 @@ const Resume: FC = () => {
 					</div>
 
 					<Copyright />
-				</div>
+				</motion.div>
 				{/*/Resume*/}
 			</section>
 
@@ -344,7 +361,7 @@ const Resume: FC = () => {
 				src='https://kit.fontawesome.com/35537105f3.js'
 				crossOrigin='anonymous'
 			/>
-		</>
+		</motion.div>
 	);
 };
 

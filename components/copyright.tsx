@@ -6,11 +6,8 @@ import styles from '../styles/components/copyright.module.scss';
 const Copyright: FC = () => {
 	return (
 		<div className={styles.Copyright}>
-			<a href='#' className={styles.Copyright__Name}>
-				Oleksii Shkulipa
-			</a>
 			<div className={styles.Copyright__content}>
-				Copyright &copy; 2020 All right reserved
+				Created by Oleksii Shkulipa &copy; 2020
 			</div>
 		</div>
 	);

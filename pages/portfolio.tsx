@@ -3,32 +3,29 @@ import React, { FC, useEffect, useState } from 'react';
 //Next
 import Script from 'next/script';
 import Head from 'next/head';
-import Image from 'next/image';
 
 //components
 import Burger from '../components/burger';
 import Project from '../components/project';
 import Copyright from '../components/copyright';
 
-//images
-import folderOpenSolid from '/public/folder-open-solid.svg';
+//type text animation (https://github.com/jstejada/react-typist#cssBlink)
+import Typist from 'react-typist';
+import 'react-typist/dist/Typist.css';
 
 //styles
 import styles from '../styles/pages/portfolio.module.scss';
 
 //transition-group
-import {
-	Transition,
-	TransitionGroup,
-	CSSTransition,
-} from 'react-transition-group';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
+//animation options
+import { animateLeftSide, animateRightSide } from '../styles/animation/animationForSides';
 
 //Typization
 import { project } from '../types/project';
 import { catEnum } from '../types/categories';
-
-//Arrays map
-const categories: string[] = [catEnum.ALL, catEnum.WEBSITES, catEnum.OTHER];
+import { motion } from 'framer-motion';
 
 const projects: project[] = [
 	{
@@ -82,7 +79,12 @@ const Portfolio: FC = () => {
 	};
 
 	return (
-		<>
+		<motion.dev
+			key='contact-page'
+			exit='exit'
+			initial='initial'
+			animate='animate'
+		>
 			<Head>
 				<meta charSet='UTF-8' />
 				<meta
@@ -99,14 +101,16 @@ const Portfolio: FC = () => {
 			</Head>
 
 			<section className={styles.Portfolio}>
-				<div className={styles.Portfolio__left}>
+				<motion.div key='portfolio__left__side' variants={animateLeftSide} className={styles.Portfolio__left}>
 					<Burger />
 					<h1>
-						Port<span>f</span>olio
+						<Typist startDelay={500} avgTypingDelay={165}>
+							Port<span>f</span>olio
+						</Typist>
 					</h1>
-				</div>
+				</motion.div>
 
-				<div className={styles.Portfolio__right}>
+				<motion.div key='portfolio__right__side' variants={animateRightSide} className={styles.Portfolio__right}>
 					{/*Portfolio__Portfolio*/}
 					<div className={styles.Portfolio__Portfolio}>
 						<h1>Portfolio</h1>
@@ -158,14 +162,14 @@ const Portfolio: FC = () => {
 					</div>
 
 					<Copyright />
-				</div>
+				</motion.div>
 			</section>
 
 			<Script
 				src='https://kit.fontawesome.com/35537105f3.js'
 				crossOrigin='anonymous'
 			/>
-		</>
+		</motion.dev>
 	);
 };
 

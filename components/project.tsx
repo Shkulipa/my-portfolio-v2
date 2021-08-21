@@ -12,9 +12,9 @@ interface ProjectProps {
 	item: project;
 }
 
-const Project: FC<ProjectProps> = (item, ...props) => {
+const Project: FC<ProjectProps> = item => {
 	return (
-		<div className={styles.Portfolio__items__block} {...props}>
+		<div className={styles.Portfolio__items__block}>
 			<div className={styles.Portfolio__items__block__photo}>
 				{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
 				{/*// @ts-ignore*/}

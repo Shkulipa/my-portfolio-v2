@@ -22,6 +22,14 @@ import close from '/public/close.svg';
 //styles
 import styles from '../styles/pages/contact.module.scss';
 
+//animation options
+import { animateLeftSide, animateRightSide } from '../styles/animation/animationForSides';
+
+//type text animation (https://github.com/jstejada/react-typist#cssBlink)
+import Typist from 'react-typist';
+import 'react-typist/dist/Typist.css';
+import { motion } from 'framer-motion';
+
 //Typization
 interface initialValues {
 	name: string;
@@ -100,7 +108,12 @@ Message: ${message}`,
 	};
 
 	return (
-		<>
+		<motion.dev
+			key='contact-page'
+			exit='exit'
+			initial='initial'
+			animate='animate'
+		>
 			<Head>
 				<meta charSet='UTF-8' />
 				<meta
@@ -116,14 +129,16 @@ Message: ${message}`,
 				<link rel='icon' href='/public/favicon/favicon.ico' />
 			</Head>
 			<section className={styles.Portfolio__right}>
-				<div className={styles.Contact__left}>
+				<motion.div key='contact__left__side' variants={animateLeftSide} className={styles.Contact__left}>
 					<Burger />
 					<h1>
-						Co<span>n</span>tact
+						<Typist startDelay={500} avgTypingDelay={165}>
+							Co<span>n</span>tact
+						</Typist>
 					</h1>
-				</div>
+				</motion.div>
 
-				<div className={styles.Contact__right}>
+				<motion.div key='contact__right__side' variants={animateRightSide} className={styles.Contact__right}>
 					{/*Contact__SeyHello*/}
 					<div className={styles.Contact__SeyHello}>
 						<h1>Sey Hello!</h1>
@@ -346,7 +361,7 @@ Message: ${message}`,
 					</div>
 
 					<Copyright />
-				</div>
+				</motion.div>
 			</section>
 			{/*/Contact*/}
 
@@ -380,7 +395,7 @@ Message: ${message}`,
 				src='https://kit.fontawesome.com/35537105f3.js'
 				crossOrigin='anonymous'
 			/>
-		</>
+		</motion.dev>
 	);
 };
 

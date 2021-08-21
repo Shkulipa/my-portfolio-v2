@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 
 //type text animation (https://github.com/jstejada/react-typist#cssBlink)
 import Typist from 'react-typist';
@@ -11,6 +11,12 @@ import Script from 'next/script';
 
 //components
 import LinkCustom from '../components/link';
+
+//framer-motion (https://www.npmjs.com/package/framer-motion)
+import { motion } from 'framer-motion';
+
+//animation options
+import { animateLeftSide, animateRightSide } from '../styles/animation/animationForSides';
 
 //Images
 import avatar from '/public/my_photo_165px-x-165px.jpg';
@@ -29,7 +35,12 @@ import styles from '../styles/pages/home.module.scss';
 
 const Index: FC = () => {
 	return (
-		<>
+		<motion.div
+			key='home-page'
+            exit='exit'
+			initial='initial'
+			animate='animate'
+		>
 			<Head>
 				<meta charSet='UTF-8' />
 				<meta
@@ -44,9 +55,8 @@ const Index: FC = () => {
 				/>
 				<link rel='icon' href='/public/favicon/favicon.ico' />
 			</Head>
-
 			<section className={styles.Homepage}>
-				<div className={styles.Homepage__left__side}>
+				<motion.div key='Homepage__left__side' variants={animateLeftSide} className={styles.Homepage__left__side}>
 					<div className={styles.Homepage__left__side__content}>
 						<Image
 							className={styles.Homepage__left__side__photo}
@@ -56,7 +66,8 @@ const Index: FC = () => {
 						<h1>
 							<Typist startDelay={500} avgTypingDelay={165}>
 								hello
-								<br /> i&apos;m <span>Oleksii</span> Shkulipa
+								<br /> i&apos;m <span>Oleksii</span>{' '}
+								Shkulipa
 							</Typist>
 						</h1>
 						<h2>web-developer</h2>
@@ -106,19 +117,21 @@ const Index: FC = () => {
 								href='https://github.com/Shkulipa'
 								rel='noreferrer'
 							>
-								<i className='fab fa-github'></i>
+								<i className='fab fa-github' />
 							</a>
 						</div>
 					</div>
-				</div>
+				</motion.div>
 
-				<div className={styles.Homepage__right__side}>
+				<motion.div key='Homepage__right__side' variants={animateRightSide} className={styles.Homepage__right__side}>
 					{/*Resume*/}
 					<LinkCustom
 						className={styles.Homepage__right__side__coll}
 						href='/resume'
 					>
-						<div className={styles.Homepage__right__side__photo}>
+						<div
+							className={styles.Homepage__right__side__photo}
+						>
 							<div
 								className={`${styles.Homepage__right__side__bgForPhoto} ${styles.resumeBlock}`}
 							>
@@ -146,12 +159,22 @@ const Index: FC = () => {
 							</div>
 						</div>
 
-						<div className={styles.Homepage__right__side__content}>
-							<div className={styles.Homepage__right__sidetitle}>
+						<div
+							className={
+								styles.Homepage__right__side__content
+							}
+						>
+							<div
+								className={
+									styles.Homepage__right__sidetitle
+								}
+							>
 								re<span>s</span>ume
 							</div>
 							<div
-								className={styles.Homepage__right__sidesubtitle}
+								className={
+									styles.Homepage__right__sidesubtitle
+								}
 							>
 								Something about my experience and skills
 							</div>
@@ -162,7 +185,9 @@ const Index: FC = () => {
 						className={styles.Homepage__right__side__coll}
 						href='/portfolio'
 					>
-						<div className={styles.Homepage__right__side__photo}>
+						<div
+							className={styles.Homepage__right__side__photo}
+						>
 							<div
 								className={`${styles.Homepage__right__side__bgForPhoto} ${styles.portfolioBlock}`}
 							>
@@ -215,12 +240,22 @@ const Index: FC = () => {
 								/>
 							</div>
 						</div>
-						<div className={styles.Homepage__right__side__content}>
-							<div className={styles.Homepage__right__sidetitle}>
+						<div
+							className={
+								styles.Homepage__right__side__content
+							}
+						>
+							<div
+								className={
+									styles.Homepage__right__sidetitle
+								}
+							>
 								port<span>f</span>olio
 							</div>
 							<div
-								className={styles.Homepage__right__sidesubtitle}
+								className={
+									styles.Homepage__right__sidesubtitle
+								}
 							>
 								Have a look at my works
 							</div>
@@ -231,7 +266,9 @@ const Index: FC = () => {
 						className={styles.Homepage__right__side__coll}
 						href='/contact'
 					>
-						<div className={styles.Homepage__right__side__photo}>
+						<div
+							className={styles.Homepage__right__side__photo}
+						>
 							<div
 								className={`${styles.Homepage__right__side__bgForPhoto} ${styles.contactBlock}`}
 							>
@@ -265,25 +302,36 @@ const Index: FC = () => {
 								/>
 							</div>
 						</div>
-						<div className={styles.Homepage__right__side__content}>
-							<div className={styles.Homepage__right__sidetitle}>
+						<div
+							className={
+								styles.Homepage__right__side__content
+							}
+						>
+							<div
+								className={
+									styles.Homepage__right__sidetitle
+								}
+							>
 								co<span>n</span>tact
 							</div>
 							<div
-								className={styles.Homepage__right__sidesubtitle}
+								className={
+									styles.Homepage__right__sidesubtitle
+								}
 							>
 								Say hello or find me
 							</div>
 						</div>
 					</LinkCustom>
-				</div>
+				</motion.div>
 			</section>
+
 
 			<Script
 				src='https://kit.fontawesome.com/35537105f3.js'
 				crossOrigin='anonymous'
 			/>
-		</>
+		</motion.div>
 	);
 };
 
