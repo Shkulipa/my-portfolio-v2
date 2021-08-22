@@ -20,6 +20,17 @@ import instagram from '/public/instagram.svg';
 import imgSeaBattle from '/public/projects/see-battle.jpg';
 import shopMrkt from '/public/projects/shop-mrkt.gif';
 import portfolio from '/public/projects/portfolio-old-gulp.gif';
+import musicPlatform from '/public/projects/music-platform.gif';
+import apiNumber from '/public/projects/api-number.gif';
+import arts from '/public/projects/arts.gif';
+import exploreSharing from '/public/projects/explore-sharing.gif';
+import library from '/public/projects/library.gif';
+import okna from '/public/projects/okna.gif';
+import oldTodo from '/public/projects/old-todo.gif';
+import phpSocial from '/public/projects/php-social.gif';
+import shopV2 from '/public/projects/shop-v2.gif';
+import socialMindk from '/public/projects/social-mindk.gif';
+import newTodo from '/public/projects/new-todo.gif';
 
 //typization
 import { dataValues } from '../types/data';
@@ -199,20 +210,77 @@ const data: dataValues = {
 
 	portfolio: [
 		{
-			github: 'https://github.com/Shkulipa/shopp-mrtk',
+			github: 'https://github.com/Shkulipa/social-network-from-mindk',
+			category: catEnum.MPERN,
+			img: socialMindk,
+		},
+		{
+			github: 'https://github.com/Shkulipa/online-store',
+			category: catEnum.MPERN,
+			img: shopV2,
+		},
+		{
+			github: 'https://github.com/Shkulipa/music-platform',
+			category: catEnum.MPERN,
+			img: musicPlatform,
+		},
+		{
+			github: 'https://github.com/Shkulipa/nodejs-explore-file-sharing',
+			category: catEnum.MPERN,
+			img: exploreSharing,
+		},
+		{
+			github: 'https://github.com/Shkulipa/pern-todo',
+			category: catEnum.MPERN,
+			img: newTodo,
+		},
+		{
+			github: 'https://github.com/Shkulipa/my-portfolio-v2',
 			category: catEnum.MPERN,
 			img: portfolio,
 		},
 		{
-			github: 'https://github.com/Shkulipa/shopp-mrtk',
+			href: 'https://shkulipa.github.io/project-ApiNumbers-convert-to-html/#/Home',
+			github: 'https://github.com/Shkulipa/project-ApiNumbers',
 			category: catEnum.MPERN,
+			img: apiNumber,
+		},
+		{
+			github: 'https://github.com/Shkulipa/shopp-mrtk',
+			category: catEnum.OTHER,
 			img: shopMrkt,
+		},
+		{
+			github: 'https://github.com/Shkulipa/php-social-network',
+			category: catEnum.OTHER,
+			img: phpSocial,
 		},
 		{
 			github: 'https://github.com/Shkulipa/See__Battle',
 			href: 'https://shkulipa.github.io/See__Battle/',
 			category: catEnum.OTHER,
 			img: imgSeaBattle,
+		},
+		{
+			github: 'https://github.com/Shkulipa/website-irvas-okna',
+			category: catEnum.OTHER,
+			img: okna,
+		},
+		{
+			github: 'https://github.com/Shkulipa/website-images-art',
+			category: catEnum.OTHER,
+			img: arts,
+		},
+		{
+			github: 'https://github.com/Shkulipa/style-library',
+			category: catEnum.OTHER,
+			img: library,
+		},
+		{
+			href: 'https://shkulipa.github.io/project-task-book-convert-to-html/',
+			github: 'https://github.com/Shkulipa/project-tasks-book',
+			category: catEnum.MPERN,
+			img: oldTodo,
 		},
 	],
 };
