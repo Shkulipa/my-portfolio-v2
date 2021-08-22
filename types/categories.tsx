@@ -1,5 +1,5 @@
 export enum catEnum {
 	ALL = 'All',
-	WEBSITES = 'Websites',
+	MPERN = '/[PM]ERN/gi',
 	OTHER = 'Other',
 }

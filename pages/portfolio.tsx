@@ -1,5 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 
+import data from './../data/data';
+
 //Next
 import Script from 'next/script';
 import Head from 'next/head';
@@ -20,56 +22,29 @@ import styles from '../styles/pages/portfolio.module.scss';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 //animation options
-import { animateLeftSide, animateRightSide } from '../styles/animation/animationForSides';
+import {
+	animateLeftSide,
+	animateRightSide,
+} from '../styles/animation/animationForSides';
 
-//Typization
-import { project } from '../types/project';
-import { catEnum } from '../types/categories';
+//framer-motion (https://www.npmjs.com/package/framer-motion)
 import { motion } from 'framer-motion';
 
-const projects: project[] = [
-	{
-		www: 'https://shkulipa.github.io/Mini/',
-		github: 'https://github.com/Shkulipa/Mini',
-		category: catEnum.WEBSITES,
-		cover: require(`/public/projects/gif.gif`),
-	},
-	{
-		www: 'https://shkulipa.github.io/Mini/',
-		github: 'https://github.com/Shkulipa/Mini',
-		category: catEnum.WEBSITES,
-		cover: require(`/public/projects/gif.gif`),
-	},
-	{
-		www: 'https://shkulipa.github.io/Mini/',
-		github: 'https://github.com/Shkulipa/Mini',
-		category: catEnum.WEBSITES,
-		cover: require(`/public/projects/gif.gif`),
-	},
-	{
-		www: 'https://shkulipa.github.io/Mini/',
-		github: 'https://github.com/Shkulipa/Mini',
-		category: catEnum.OTHER,
-		cover: require(`/public/projects/gif.gif`),
-	},
-	{
-		www: 'https://shkulipa.github.io/Mini/',
-		github: 'https://github.com/Shkulipa/Mini',
-		category: catEnum.OTHER,
-		cover: require(`/public/projects/gif.gif`),
-	},
-];
+//Typization
+import { catEnum } from '../types/categories';
+import { portfoliosItem } from '../types/data';
 
 const Portfolio: FC = () => {
 	const [category, setCategory] = useState<string>(catEnum.ALL);
-	const [projectsFiltred, setProjectsFiltred] = useState<project[]>(projects);
+	const [projectsFiltred, setProjectsFiltred] =
+		useState<portfoliosItem[]>(data.portfolio);
 
 	useEffect(() => {
 		if (category === catEnum.ALL) {
-			setProjectsFiltred(projects);
+			setProjectsFiltred(data.portfolio);
 		} else {
 			setProjectsFiltred(
-				projects.filter(item => item.category === category)
+				data.portfolio.filter(item => item.category === category)
 			);
 		}
 	}, [category]);
@@ -79,7 +54,7 @@ const Portfolio: FC = () => {
 	};
 
 	return (
-		<motion.dev
+		<motion.div
 			key='contact-page'
 			exit='exit'
 			initial='initial'
@@ -101,7 +76,11 @@ const Portfolio: FC = () => {
 			</Head>
 
 			<section className={styles.Portfolio}>
-				<motion.div key='portfolio__left__side' variants={animateLeftSide} className={styles.Portfolio__left}>
+				<motion.div
+					key='portfolio__left__side'
+					variants={animateLeftSide}
+					className={styles.Portfolio__left}
+				>
 					<Burger />
 					<h1>
 						<Typist startDelay={500} avgTypingDelay={165}>
@@ -110,7 +89,11 @@ const Portfolio: FC = () => {
 					</h1>
 				</motion.div>
 
-				<motion.div key='portfolio__right__side' variants={animateRightSide} className={styles.Portfolio__right}>
+				<motion.div
+					key='portfolio__right__side'
+					variants={animateRightSide}
+					className={styles.Portfolio__right}
+				>
 					{/*Portfolio__Portfolio*/}
 					<div className={styles.Portfolio__Portfolio}>
 						<h1>Portfolio</h1>
@@ -127,7 +110,7 @@ const Portfolio: FC = () => {
 								All
 							</div>
 							{[
-								...new Set(projects.map(item => item.category)),
+								...new Set(data.portfolio.map(item => item.category)),
 							].map((cat, index) => {
 								return (
 									<div
@@ -147,16 +130,18 @@ const Portfolio: FC = () => {
 
 						<div className={styles.Portfolio__items}>
 							<TransitionGroup>
-								{projectsFiltred.map((project, index) => (
-									<CSSTransition
-										appear={true}
-										key={index}
-										timeout={400}
-										classNames='project'
-									>
-										<Project item={project} />
-									</CSSTransition>
-								))}
+								{projectsFiltred.map((project, index) => {
+									return (
+										<CSSTransition
+											appear={true}
+											key={index}
+											timeout={400}
+											classNames='project'
+										>
+											<Project item={project} />
+										</CSSTransition>
+									);
+								})}
 							</TransitionGroup>
 						</div>
 					</div>
@@ -169,7 +154,7 @@ const Portfolio: FC = () => {
 				src='https://kit.fontawesome.com/35537105f3.js'
 				crossOrigin='anonymous'
 			/>
-		</motion.dev>
+		</motion.div>
 	);
 };
 

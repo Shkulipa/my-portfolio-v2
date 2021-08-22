@@ -34,7 +34,7 @@ interface portfoliosItem {
 	category: string;
 	img: React.HTMLProps<HTMLImageElement>;
 	github: string;
-	domain: string;
+	href?: string;
 }
 
 interface dataValues {
@@ -58,4 +58,4 @@ interface dataValues {
 	portfolio: portfoliosItem[];
 }
 
-export default dataValues;
+export type { dataValues, portfoliosItem };

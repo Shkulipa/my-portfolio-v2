@@ -16,8 +16,14 @@ import github from '/public/github.svg';
 import gmail from '/public/gmail-logo.svg';
 import instagram from '/public/instagram.svg';
 
+//projects
+import imgSeaBattle from '/public/projects/see-battle.jpg';
+import shopMrkt from '/public/projects/shop-mrkt.gif';
+import portfolio from '/public/projects/portfolio-old-gulp.gif';
+
 //typization
-import dataValues from './../types/data';
+import { dataValues } from '../types/data';
+import { catEnum } from '../types/categories';
 
 const data: dataValues = {
 	name: 'Oleksii',
@@ -193,10 +199,20 @@ const data: dataValues = {
 
 	portfolio: [
 		{
-			category: '',
-			img: '',
-			github: '',
-			domain: '',
+			github: 'https://github.com/Shkulipa/shopp-mrtk',
+			category: catEnum.MPERN,
+			img: portfolio,
+		},
+		{
+			github: 'https://github.com/Shkulipa/shopp-mrtk',
+			category: catEnum.MPERN,
+			img: shopMrkt,
+		},
+		{
+			github: 'https://github.com/Shkulipa/See__Battle',
+			href: 'https://shkulipa.github.io/See__Battle/',
+			category: catEnum.OTHER,
+			img: imgSeaBattle,
 		},
 	],
 };
