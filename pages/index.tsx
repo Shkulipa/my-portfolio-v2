@@ -1,5 +1,8 @@
 import React, { FC, useEffect } from 'react';
 
+//data
+import data from '../data/data';
+
 //type text animation (https://github.com/jstejada/react-typist#cssBlink)
 import Typist from 'react-typist';
 import 'react-typist/dist/Typist.css';
@@ -19,10 +22,6 @@ import { motion } from 'framer-motion';
 import { animateLeftSide, animateRightSide } from '../styles/animation/animationForSides';
 
 //Images
-import avatar from '/public/my_photo_165px-x-165px.jpg';
-import LinkedIn from '/public/LinkedIn.svg';
-import facebook from '/public/facebook.svg';
-import telegram from '/public/telegram.svg';
 import resumeIcon from '/public/curriculum-vitae-for-resume-with-border-01.svg';
 import portfolioIcon from '/public/portfolio-with-border-01.svg';
 import contactIcon from '/public/email-with-border-01.svg';
@@ -47,11 +46,11 @@ const Index: FC = () => {
 					name='viewport'
 					content='width=device-width, initial-scale=1'
 				/>
-				<title>Oleksii Shkulipa | Web-Developer | Home page</title>
+				<title>{data.name} {data.surname} | {data.position} | Home page</title>
 				<meta name='description' content="One programmer's website" />
 				<meta
 					name='keywords'
-					content="Oleksii Shkulipa, Oleksii Shkulipa, Алексей Шкулипа, Oleksii Shkulipa website, Oleksii Shkulipa site, site, one programmer's website, one programmers website"
+					content={data.keywords}
 				/>
 				<link rel='icon' href='/public/favicon/favicon.ico' />
 			</Head>
@@ -60,65 +59,37 @@ const Index: FC = () => {
 					<div className={styles.Homepage__left__side__content}>
 						<Image
 							className={styles.Homepage__left__side__photo}
-							src={avatar}
-							alt='Oleksii Shkulipa'
+							src={data.imgAvatar}
+							alt={`${data.name} ${data.surname}`}
 						/>
 						<h1>
 							<Typist startDelay={500} avgTypingDelay={165}>
 								hello
-								<br /> i&apos;m <span>Oleksii</span>{' '}
-								Shkulipa
+								<br /> i&apos;m <span>{data.name}</span>{' '}
+								{data.surname}
 							</Typist>
 						</h1>
-						<h2>web-developer</h2>
+						<h2>{data.position}</h2>
 
 						<div className={styles.social}>
-							<a
-								target='_blank'
-								href='https://www.linkedin.com/in/oleksii-shkulipa'
-								rel='noreferrer'
-							>
-								<Image
-									src={LinkedIn}
-									width={24}
-									height={24}
-									alt='LinkedIn'
-									layout='fixed'
-								/>
-							</a>
-							<a
-								target='_blank'
-								href='https://www.facebook.com/Oleksii.Shkulipa/'
-								rel='noreferrer'
-							>
-								<Image
-									src={facebook}
-									width={24}
-									height={24}
-									alt='facebook'
-									layout='fixed'
-								/>
-							</a>
-							<a
-								target='_blank'
-								href='https://t.me/Shkulipa'
-								rel='noreferrer'
-							>
-								<Image
-									src={telegram}
-									width={24}
-									height={24}
-									alt='telegram'
-									layout='fixed'
-								/>
-							</a>
-							<a
-								target='_blank'
-								href='https://github.com/Shkulipa'
-								rel='noreferrer'
-							>
-								<i className='fab fa-github' />
-							</a>
+							{data.socials.map(({imgHomePage, href, alt}, index) => {
+								return (
+									<a
+										key={index}
+										target='_blank'
+										href={href}
+										rel='noreferrer'
+									>
+										<Image
+											src={imgHomePage}
+											width={24}
+											height={24}
+											alt={alt}
+											layout='fixed'
+										/>
+									</a>
+								)
+							})}
 						</div>
 					</div>
 				</motion.div>

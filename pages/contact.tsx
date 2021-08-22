@@ -1,5 +1,8 @@
 import React, { FC, useState } from 'react';
 
+//data
+import data from '../data/data';
+
 //Next js
 import Head from 'next/head';
 import Image from 'next/image';
@@ -108,7 +111,7 @@ Message: ${message}`,
 	};
 
 	return (
-		<motion.dev
+		<motion.div
 			key='contact-page'
 			exit='exit'
 			initial='initial'
@@ -120,11 +123,11 @@ Message: ${message}`,
 					name='viewport'
 					content='width=device-width, initial-scale=1'
 				/>
-				<title>Oleksii Shkulipa | Web-Developer | Contact page</title>
+				<title>{data.name} {data.surname} | {data.position} | Contact page</title>
 				<meta name='description' content="One programmer's website" />
 				<meta
 					name='keywords'
-					content="Oleksii Shkulipa, Oleksii Shkulipa, Алексей Шкулипа, Oleksii Shkulipa website, Oleksii Shkulipa site, site, one programmer's website, one programmers website"
+					content={data.keywords}
 				/>
 				<link rel='icon' href='/public/favicon/favicon.ico' />
 			</Head>
@@ -217,14 +220,7 @@ Message: ${message}`,
 
 					{/*Contact__Map*/}
 					<div className={styles.Contact__Map}>
-						<iframe
-							src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3201073.546887858!2d33.73154994045105!3d50.201345899186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x41290220fc73a461%3A0xdb74f6366b836c28!2z0KHRg9C80YssINCh0YPQvNGB0LrQsNGPINC-0LHQu9Cw0YHRgtGMLCA0MDAwMA!5e0!3m2!1sru!2sua!4v1589633466029!5m2!1sru!2sua'
-							frameBorder='0'
-							style={{ border: 0 }}
-							allowFullScreen={false}
-							aria-hidden={false}
-							tabIndex={0}
-						/>
+						{data.map}
 					</div>
 
 					{/*Contact__Details*/}
@@ -237,129 +233,33 @@ Message: ${message}`,
 										styles.Contact__Details__block__content
 									}
 								>
-									Ukraine, Sumy
+									{data.country}, {data.city}, {data.postIndex}
 								</div>
-							</div>
-
-							<div className={styles.Contact__Details__block}>
-								<a
-									target='_blank'
-									href='mailto:oleksii.Shkulipa@gmail.com'
-									rel='noreferrer'
-								>
-									<Image
-										width={24}
-										height={24}
-										src={email}
-										alt=''
-									/>
-									<div
-										className={
-											styles.Contact__Details__block__content
-										}
-									>
-										Oleksii.Shkulipa@gmail.com
-									</div>
-								</a>
-							</div>
-
-							<div className={styles.Contact__Details__block}>
-								<a
-									target='_blank'
-									href='Skype:Stronger0075?chat'
-									rel='noreferrer'
-								>
-									<Image
-										width={24}
-										height={24}
-										src={skype}
-										alt=''
-									/>
-									<div
-										className={
-											styles.Contact__Details__block__content
-										}
-									>
-										Skype
-									</div>
-								</a>
 							</div>
 						</div>
 
 						<div className={styles.Contact__social}>
-							<a
-								className={styles.Contact__social__content}
-								href='https://www.linkedin.com/in/oleksii-shkulipa'
-								target='_blank'
-								rel='noreferrer'
-							>
-								<div
-									className={
-										styles.Contact__social__content__icon
-									}
-								>
-									<i className='fab fa-linkedin-in'></i>
-								</div>
-							</a>
-							<a
-								className={styles.Contact__social__content}
-								href='https://www.facebook.com/Oleksii.Shkulipa/'
-								target='_blank'
-								rel='noreferrer'
-							>
-								<div
-									className={
-										styles.Contact__social__content__icon
-									}
-								>
-									<i className='fab fa-facebook-f'></i>
-								</div>
-							</a>
-							<a
-								className={styles.Contact__social__content}
-								href='https://instagram.com/'
-								target='_blank'
-								rel='noreferrer'
-							>
-								<div
-									className={
-										styles.Contact__social__content__icon
-									}
-								>
-									<i className='fab fa-instagram'></i>
-								</div>
-							</a>
-							<a
-								className={styles.Contact__social__content}
-								target='_blank'
-								href='https://t.me/Shkulipa'
-								rel='noreferrer'
-							>
-								<div
-									className={
-										styles.Contact__social__content__icon
-									}
-								>
-									<i className='fab fa-telegram-plane'></i>
-								</div>
-							</a>
-							<a
-								className={styles.Contact__social__content}
-								href='https://github.com/Shkulipa'
-								target='_blank'
-								rel='noreferrer'
-							>
-								<div
-									className={
-										styles.Contact__social__content__icon
-									}
-								>
-									<i className='fab fa-github'></i>
-								</div>
-							</a>
+							{data.socials.map(({imgContactPage, href}, index) => {
+								return (
+									<a
+										key={index}
+										className={styles.Contact__social__content}
+										href={href}
+										target='_blank'
+										rel='noreferrer'
+									>
+										<div
+											className={
+												styles.Contact__social__content__icon
+											}
+										>
+											{imgContactPage}
+										</div>
+									</a>
+								)
+							})}
 						</div>
 					</div>
-
 					<Copyright />
 				</motion.div>
 			</section>
@@ -395,7 +295,7 @@ Message: ${message}`,
 				src='https://kit.fontawesome.com/35537105f3.js'
 				crossOrigin='anonymous'
 			/>
-		</motion.dev>
+		</motion.div>
 	);
 };
 
