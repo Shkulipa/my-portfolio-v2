@@ -8,10 +8,9 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "lint": "next lint",
-    "start": "next start -p $PORT",
-    "heroku-postbuild": "npm run build"
+    "build": "next build",
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "formik": "^2.2.9",
