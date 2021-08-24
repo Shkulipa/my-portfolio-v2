@@ -45,7 +45,7 @@ interface dataValues {
 	city: string;
 	postIndex: number;
 	map: React.HTMLProps<HTMLIFrameElement>;
-	imgAvatar: React.HTMLProps<HTMLImageElement>;
+	imgAvatar: StaticImageData;
 	email: string;
 	keywords: string;
 	work: workEducationItem[];

@@ -81,6 +81,7 @@ const Index: FC = () => {
 										rel='noreferrer'
 									>
 										<Image
+											// @ts-ignore
 											src={imgHomePage}
 											width={24}
 											height={24}

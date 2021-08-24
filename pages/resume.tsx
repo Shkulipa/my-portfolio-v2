@@ -129,6 +129,7 @@ const Resume: FC = () => {
 									>
 										<div className={styles.Resume__photo}>
 											<Image
+												// @ts-ignore
 												src={img}
 												alt={alt}
 											/>
@@ -207,6 +208,7 @@ const Resume: FC = () => {
 									<div key={index} className={styles.Resume__language__block}>
 										<Image
 											className={styles.languageHoverImg}
+											// @ts-ignore
 											src={img}
 											alt={alt}
 											width={120}
