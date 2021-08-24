@@ -29,7 +29,7 @@
         "prettier/prettier": [
             "error",
             {
-                "printWidth": 80,
+                /*"printWidth": 80,
                 "tabWidth": 4,
                 "useTabs": true,
                 "jsxSingleQuote": true,
@@ -42,7 +42,7 @@
                 "arrowParens": "avoid",
                 "fileInfoOptions": {
                     "withNodeModules": true
-                }
+                }*/
             }
         ]
     }
